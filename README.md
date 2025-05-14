@@ -7,9 +7,9 @@ Welcome to my portfolio showcasing a comprehensive case study for Bellabeat, usi
 ## 📁 Repository Structure
 
 ```
-Bellabeat-Portfolio/
+Bellabeat-Project/
 ├── data/                       # Cleaned CSVs and raw datasets
-│   ├── user_summary_readr.csv
+│   ├── user_summary.csv
 │   ├── avg_daily_steps.csv
 │   ├── avg_heart_rate_user.csv
 │   ├── avg_hourly_steps.csv
