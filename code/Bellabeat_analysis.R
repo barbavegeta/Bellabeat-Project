@@ -85,26 +85,6 @@ summary(daily_activity)
 
 daily_activity$ActivityDate <- mdy(daily_activity$ActivityDate)
 
-
-# daily_calories_X - daily_steps_x
-# hourly_calories - hour;y_intensities - hourly_steps
-# minutes_calories - minute_intensities - minute_mets - minute_steps
-# minute_calories_wide_X - minute_intensities_X - minute_steps_X
-
-# Calories burned = MET * Weight(Kg) * Hours
-# MET = Calories burned / Weight(Kg) * Hours
-# MET = hourly_calories$Calories / weight_log$WeightKg * 1
-
-# CUT
-# minute_intensities
-
-# 4. Summary of Analysis
-# You’ve already calculated and visualized:
-# % weight change vs. avg daily calories
-# % weight change vs. avg daily METs
-# % weight change vs. high-intensity minutes
-# avg heart rate vs. avg high-intensity minutes
-
 # 1. MET summary
 
 avg_mets_user <- minute_mets %>%
@@ -147,13 +127,6 @@ avg_heart_rate_user <- heartrate_seconds %>%
   summarize(avg_heart_rate_day = mean(Value, na.rm = TRUE), .groups = "drop") %>%
   group_by(Id) %>%
   summarize(avg_heart_rate = mean(avg_heart_rate_day, na.rm = TRUE), .groups = "drop")
-
-# Correlation: daily average heart rate vs. daily steps
-correlation_daily_heart_rate <- heartrate_seconds %>%
-  mutate(Id = as.character(Id),Date = mdy_hms(Time)
-  ) %>%
-  group_by(Id, Date)  %>%
-  summarize(avg_heart_rate = mean(Value, na.rm = TRUE), .groups="drop")
 
 # 5. Steps
 avg_user_steps <- daily_activity %>%
@@ -211,7 +184,7 @@ high_intensity_summary <- daily_intensities_X %>%
     .groups = "drop"
   )
 
-# 2. Put them in a named list
+# Put them in a named list
 summaries <- list(
   weight = weight_change,
   mets = avg_mets_user,
@@ -239,14 +212,3 @@ dir.create(output_folder, showWarnings = FALSE)
 for (name in names(summaries)) {
   write_csv(summaries[[name]], file = file.path(output_folder, paste0(name, ".csv")))
 }
-
-
-library(tidyr)
-
-user_activity_long <- user_summary %>%
-  select(Id, avg_very_active_min, avg_fairly_active_min, avg_lightly_active_min) %>%
-  pivot_longer(
-    cols = starts_with("avg_"),
-    names_to = "ActivityType",
-    values_to = "Minutes"
-  )
