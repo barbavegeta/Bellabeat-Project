@@ -10,56 +10,38 @@ Welcome to my portfolio showcasing a comprehensive case study for Bellabeat, usi
 Bellabeat-Portfolio/
 ├── data/                       # Cleaned CSVs and raw datasets
 │   ├── user_summary_readr.csv
-│   ├── daily_activity.csv
-│   ├── minute_mets.csv
-│   └── ...                     # other summary and raw files
+│   ├── avg_daily_steps.csv
+│   ├── avg_heart_rate_user.csv
+│   ├── avg_hourly_steps.csv
+│   ├── avg_mets_user.csv
+│   ├── avg_user_steps.csv
+│   ├── daily_steps_heart_rate.csv
+│   ├── hi_minutes.csv
+│   ├── high_intensity_summary.csv
+│   ├── hourly_intensity_summary.csv
+│   └── weight_change.csv
 ├── code/                       # Analysis scripts
-│   ├── analysis.R              # R script combining all summaries
-│   ├── charts.R                # R scripts for ggplot2 charts
-│   └── export_activity_long.R  # R script reshaping data for Tableau
+│   ├── Bellabeat_analysis.R              # R script combining all summaries
+│   └── ggplots_bellabeat.R                # R scripts for ggplot2 charts
 ├── tableau/                    # Tableau workbook and exports
-│   ├── Bellabeat_Dashboard.twbx
-│   └── activity_minutes_long.csv
+│   └── Bellabeat_Dashboard.twbx
 ├── presentation/               # Final presentation
-│   └── Bellabeat_Case_Study_Insights.pptx
+│   └── Bellabeat_Insights.pptx
 ├── images/                     # Exported charts for README or PPT
-│   ├── met_vs_weight.png
-│   ├── intensity_vs_mets.png
-│   ├── activity_vs_hr.png
-│   └── activity_profiles.png
+│   ├── mets_vs_weight_change.png
+│   ├── avg_act_per_min.png
+│   ├── steps_vs_act_type.png
+│   ├── act_vs_rest_heart_rate.png
+│   └── act_int_vs_mets.png
 └── README.md                   # This document
 ```
 
----
-
-## 🚀 Getting Started
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/yourusername/Bellabeat-Portfolio.git
-   cd Bellabeat-Portfolio
-   ```
-
-2. **Explore the data** in `data/` (CSV files).
-
-3. **Run the analysis**:
-
-   ```r
-   source("code/analysis.R")
-   ```
-
-4. **Visualize in R** by sourcing `code/charts.R` or open `tableau/Bellabeat_Dashboard.twbx` in Tableau.
-
-5. **Review the presentation** in `presentation/Bellabeat_Case_Study_Insights.pptx`.
-
----
 
 ## 📊 Key Insights
 
 * **METs vs Weight Change**: Each +1 MET correlates with \~0.23% weight loss (R²=0.29).
 * **Activity Intensity vs METs**: Very-active minutes explain \~60% of MET variation (p<0.0001).
-* **Activity vs Resting HR**: No single intensity bucket strongly predicts resting heart rate.
+* **Activity vs Resting Heart Rate**: No single intensity bucket strongly predicts resting heart rate.
 * **User Segmentation**: Users grouped into High, Moderate, Low intensity for targeted recommendations.
 
 ---
